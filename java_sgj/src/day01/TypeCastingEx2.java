@@ -24,8 +24,8 @@ public class TypeCastingEx2 {
 		System.out.println((double)1/2); //0.5를 보고싶으니까 강제 형변환 했음
 		
 		//같은 타입의 변수를 여러개 선언하는 방법
-		int num5, num6, num7;
-		int num5 = 1, num6 = 2, num7 = 3;
+		//int num5, num6, num7;
+		//int num5 = 1, num6 = 2, num7 = 3;
 	}
 
 }
