@@ -11,6 +11,7 @@ public class TestEx1 {
 		
 		
 		char ch1 = 'A';
+		System.out.println(ch1);
 	}
 
 }
