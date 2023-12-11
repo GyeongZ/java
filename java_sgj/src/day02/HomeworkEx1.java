@@ -28,9 +28,8 @@ public class HomeworkEx1 {
 			System.out.println("C 입니다.");
 		}else if (score < 90) {
 			System.out.println("B 입니다.");
-		}else if (score <= 100) {
+		}else {
 			System.out.println("A 입니다.");
-			
 		}
 		scan.close();
 	}
