@@ -11,7 +11,10 @@ public class LoopEx1 {
 		char ch = 'a';
 		for( ; ch != 'q'; ) {
 			System.out.print("입력 : ");
+			ch = scan.next().charAt(0);
+			System.out.println("문자 : " + ch);
 			}
-		}
+		scan.close();
 	}
+}
 
