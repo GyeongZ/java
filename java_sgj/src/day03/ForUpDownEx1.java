@@ -31,16 +31,17 @@ public class ForUpDownEx1 {
 		
 		for( ; num != r; ) {
 		
-			System.out.print("1~100사이의 수를 입력하세요. : ");
+			System.out.print("정수 : ");
 			num = scan.nextInt();
 			
 			if(num > r) {
 				System.out.println("Down!");			
-			}else if(num < 7) {
+			}else if(num < r) {
 				System.out.println("Up!");
 			}else {
 				System.out.println("정답입니다~");
 			}
 		}	
+		scan.close();
 	}
 }
