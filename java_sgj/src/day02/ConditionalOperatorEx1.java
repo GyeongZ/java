@@ -11,9 +11,10 @@ public class ConditionalOperatorEx1 {
 		
 		String result = "";
 		
-		//score가 100보다 (작거나 같)(고) 90보다 (크커거나 같)으면		System.out.println(score + "점은" + "A학점입니다. A학점이 아닙니다.");
+		//score가 100보다 (작거나 같)(고) 90보다 (크커거나 같)으면
+		//System.out.println(score + "점은" + "A학점입니다. A학점이 아닙니다.");
 		//score <= 100 && score
-		result = score <= 100 % score >= 90 ? "A학점입니다." : "A학점이 아닙니다.");
+		//result = score <= 100  score >= 90 ? "A학점입니다." : "A학점이 아닙니다.");
 		System.out.println(score + "점은" + result);
 	}
 
