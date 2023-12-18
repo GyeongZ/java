@@ -29,7 +29,7 @@ public class homework_3 {
 		 * 입력 : 3 9 1
 		 * 결과 : 3S
 		 * 정답입니다.
-		 */
+		
 		
 		int r = 0;
 		//전체 랜덤 수 범위 1~9
@@ -81,6 +81,60 @@ public class homework_3 {
 		
 		
 		scan.close();
+		 */
+		 System.out.println(com[0]+","+com[1]+","+com[2]);
+	      
+	      int[] user = new int[3];
+	      
+	      while(true) {
+	         
+	         for(int i = 0;i<user.length;i++) {
+	            System.out.print((i+1)+"번째 숫자 : ");
+	            user[i] = sc.nextInt();
+	            //범위 1~9아닌경우
+	            if(user[i]<1 || user[i] > 9) {
+	               System.out.println("잘못된"+
+	            "입력입니다.");
+	               i--;
+	               continue;
+	            }
+	            for(int j = 0;j<i;j++) {
+	               if(user[i] == user[j]) {
+	                  System.out.println("잘못된"+ "입력입니다.");
+	                  i--;
+	                  break;
+	               }
+	            }
+	         }
+	         
+	         int strike = 0;
+	         int ball = 0;
+	         
+	         for(int i = 0;i<user.length;i++) {
+	            for(int j = 0;j<com.length;j++) {
+	               if(user[i] == com[j]) {
+	                  if(i == j) {
+	                     strike++;
+	                  }
+	                  else {
+	                     ball++;
+	                  }
+	               }
+	            }
+	         }
+	         
+	         if(strike == 0 && ball == 0) {
+	            System.out.println("Out입니다.");
+	         }
+	         else if(strike == 3) {
+	            System.out.println("홈런입니다.");
+	            break;
+	         }
+	         else {
+	            System.out.println("strike : "+strike+", ball : + ball");
+	         }
+	         
+	      }
 	}
 }	
 
