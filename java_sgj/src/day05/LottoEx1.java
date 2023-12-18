@@ -28,8 +28,9 @@ public class LottoEx1 {
 				count++;
 			}
 		}
+		//정렬
 		Arrays.sort(arr);
-		
+		//출력
 		for(int i = 0; i<arr.length; i++) {
 			System.out.print(arr[i] + " ");
 		}
