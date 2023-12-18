@@ -73,21 +73,37 @@ public class LottoEx2 {
 					break;
 				}
 			}
-		}
+		
 		
 		//당첨 개수에 따른 등수로 츨력
 			switch(sameCount) {
 			case 6:
 				System.out.println("1등!");
 				break;
-			case 5;
-			int = i;
-			//사용자가 입력한 번호에 보너스와 일치하는 번호가 있는지 확인
-			for(i = 0; i < user[1]) {
-				
-			}
-				System.out.println("2등!");
-				
+			case 5:
+				int i;
+				//사용자가 입력한 번호에 보너스와 일치하는 번호가 있는지 확인
+				for(i = 0; i < user.length;i++) {
+				if(bonus == user[i]) {
+				break;	
+					}
+				}
+				//보너스번호와 일치하는 번호가 없으면
+				if(i == user.length) {
+					System.out.println("3등!");
+				}else {
+					System.out.println("2등!");
+
+				}
+				break;
+			case 4:
+					System.out.println("4등!");
+				break;
+			case 3:
+					System.out.println("5등!");
+			 	break;
+		 	default:
+			 		System.out.println("꽝!");
 			}
 			
 		}
