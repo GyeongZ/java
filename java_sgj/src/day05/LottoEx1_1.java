@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LottoEx1_1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args, int r, int i) {
 		/* 1 ~ 45 사이의 랜덤한 수 6개를 생성하여 출력하는 예제(중복되지않는)
 		 * 단, 정렬이 되도록 작성한다.
 		 */
@@ -16,12 +16,12 @@ public class LottoEx1_1 {
 		//랜덤으로 중복되지않는 6개의 수를 생성 (count)
 		while(count < lotto.length) {
 			// 랜덤한 수 생성
-			int r = (int)(Math.random()*(max - min + 1) + min);
+			int r1 = (int)(Math.random()*(max - min + 1) + min);
 			
 			//중복 확인
-			int i;
-			for(i = 0; i<count; i++) {
-				if(lotto[i] == r)
+			int i1;
+			for(i1 = 0; i1<count; i1++) {
+				if(lotto[i1] == r1)
 					break;
 			}
 		}
@@ -35,8 +35,8 @@ public class LottoEx1_1 {
 			Arrays.sort(lotto);
 					
 		//출력
-			for(int i = 0; i<lotto.length; i++) {
-				System.out.print(lotto[i] + " ");
+			for(int i1 = 0; i1<lotto.length; i1++) {
+				System.out.print(lotto[i1] + " ");
 			}
 	}
 
