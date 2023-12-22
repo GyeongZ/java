@@ -2,9 +2,13 @@ package day11.product;
 
 import java.util.Scanner;
 
+import day09.board.Board;
+
 public class ProductMain {
 
 	private static Scanner scan = new Scanner(System.in);
+	private static Product [] productList = new Product[100];
+	private static int count = 0;
 	
 	public static void main(String[] args) {
 		/* 제품을 관리하는 프로그램을 구현하세요.
@@ -60,6 +64,8 @@ public class ProductMain {
 				System.out.println("잘못된 메뉴입니다.");
 				}
 			}
+		
+		
 		/**제품 [가격]을 수정하는 메서드
 		 */
 		private static void updateProduct() {
@@ -68,30 +74,23 @@ public class ProductMain {
 			int num = scan.nextInt();
 			
 			
-			//반복문 : 게시글 목록 전체
+			//반복문 : 판매 목록 전체
 			for(int i = 0; i<count; i++) {
-				//입력한 게시글 번호와 일치하는 게시글이 있으면
-				if(num == boardList[i].getNum()) {
-					scan.nextLine(); //엔터 처리 안그러면 계속 일자로 붙어서 나옴
-					System.out.print("수정할 제품 번호 :");
-					String title = scan.nextLine();
-					System.out.print("수정할 제품 가격 :");
-					String contents = scan.nextLine();
-					//해당 게시글의 제목과 내용을 수정하고 메서드 종료
-					boardList[i].update(title, contents);
-					return;
+				
 				}
 			}
 			
 			//일치하는 게시글이 없습니다 라고 출력
-			System.out.println("일치하는 게시글이 없습니다.");
-		}
-
+		
 
 		/**제품 판매를 기록하는 메서드
 		 */
 		private static void saleProduct() {
 			// 제품 판매 품목을 기록한다.
+			// 입고 된 목록에서 판매된 수를 빼준다.
+			//제품 1 : 1개 추가
+			//제품 2 : 0개 추가
+			//제품 3 : 3개 추가
 		}
 
 
@@ -99,6 +98,11 @@ public class ProductMain {
 		 */	
 		private static void stockProduct() {
 			// 제품 입고를 신청한다
+			System.out.print("입고 된 제품 번호 :");
+			int num = scan.nextInt();
+			//제품 1 : 1개 추가
+			//제품 2 : 0개 추가
+			//제품 3 : 3개 추가
 		}
 
 
