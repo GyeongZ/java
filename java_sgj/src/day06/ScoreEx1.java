@@ -163,7 +163,8 @@ public class ScoreEx1 {
 				
 				default :
 					System.out.println("잘못된 메뉴입니다.");
-				}
+				
+		}
 		}while(menu != 3);
 		
 		scan.close();

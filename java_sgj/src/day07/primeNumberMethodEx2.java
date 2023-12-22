@@ -40,7 +40,6 @@ public class primeNumberMethodEx2 {
 			 * 메서드명 : isPrimeNumber2 (보통 불린 타입에서는 is 많이 씀)
 			 */
 	public static boolean isPrimeNumber2(int num) {
-		
 			for(int i = 2; i< num; i++) {
 				if(isDivisor(num, i)) {
 					return false;

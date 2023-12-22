@@ -27,14 +27,16 @@ public class CountEx1 {
 		
 		//반복문으로 5개의 정수를 입력 받아 user에 저장하고, count배열에 입력받은 정수번지에 해당하는 숫자 1증가
 		Scanner scan = new Scanner(System.in);
-		System.out.print("정수 5개를 입력하세요(1~0) : ");
+		System.out.print("정수 5개를 입력하세요(1~9) : ");
 		for(int i = 0; i < user.length; i++) {
 			user[i] = scan.nextInt();
 			count[user[i]]++;
 		}
 			
 			//count 배열에 있는 값을 1번지부터 9번지까지 출력
-			for()
+			for(int i = 0; i < user.length; i++) {
+				user[i] = scan.nextInt();
+				count[user[i]]++;
 		}
 	}
 

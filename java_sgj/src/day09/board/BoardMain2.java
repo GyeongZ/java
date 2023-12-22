@@ -77,7 +77,6 @@ public class BoardMain2 {
 		}
 	}
 	/**
-	 * 
 	 * @param submenu
 	 */
 	
@@ -142,8 +141,9 @@ public class BoardMain2 {
 			deleteBoard();
 		
 			System.out.println("게시글이 삭제되었습니다.");
-			System.out.println("--------------------------");		
+			System.out.println("--------------------");		
 			
+			break;
 		case 4:
 			System.out.println("이전으로 돌아갑니다.");
 			break;
@@ -160,7 +160,7 @@ public class BoardMain2 {
 		 * --------------------------*/
 		
 		//삭제할 게시글 번호를 입력
-	System.out.println("--------------------------");
+	System.out.println("--------------------");
 	System.out.print("삭제할 게시글 번호 : ");
 	int num = scan.nextInt();
 	

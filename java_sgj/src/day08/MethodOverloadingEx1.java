@@ -5,7 +5,7 @@ public class MethodOverloadingEx1 {
 	public static void main(String[] args) {
 		System.out.println(sum(1,2));
 		System.out.println(sum(1.2, 2.3));
-		System.out.println(sum(1,2,0000003));
+		System.out.println(sum(1,2,3));
 	}
 	
 	//두 정수의 합을 알려주는 메서드
@@ -23,6 +23,6 @@ public class MethodOverloadingEx1 {
 	
 	//세 정수의 합
 	public static int sum(int num1, int num2, int num3) {
-		return num1
+		return num1 + num2 + num3;
 	}
 }
