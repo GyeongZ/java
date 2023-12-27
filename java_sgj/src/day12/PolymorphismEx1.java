@@ -1,5 +1,6 @@
 package day12;
 
+
 public class PolymorphismEx1 {
 
 	public static void main(String[] args) {
@@ -9,9 +10,10 @@ public class PolymorphismEx1 {
 		Remocon r  = new Remocon();
 		Tv tv = new Tv();
 		AirCon aircon = new AirCon();
+		Projector projector = new Projector();
 		r.turnOn(tv);
 		r.turnOn(aircon);
-		r.turnOn
+		r.turnOn(projector);
 	}
 
 }
@@ -30,26 +32,30 @@ class Remocon{
 	void turnOn(ElectronicProduct target) {
 		if(target instanceof Tv) {
 			System.out.println("Tv");
-		}else if(target instanceof Aircon) {
+		}else if(target instanceof AirCon) {
 			System.out.println("에어컨");
-		}else if(target instance of Projector) {
+		}else if(target instanceof Projector) {
 			System.out.println("빔 프로젝터");
 		}else {
 			System.out.println("전자 ");
 		}
 		System.out.println("제품이 켜졌습니다.");
 	}
-	
+}
+
 class ElectronicProduct{
 	
 }
-class Tv{
+class Tv extends ElectronicProduct{
 	
 }
 
-class AirCon{
+class AirCon extends ElectronicProduct{
+	
+}
+
+class Projector extends ElectronicProduct{
 	
 }
 	
 	
-}
