@@ -1,6 +1,5 @@
 package day12;
 
-import day08.Car;
 
 public class InheritanceEx1 {
 
@@ -9,19 +8,23 @@ public class InheritanceEx1 {
 		Car c1 = new Car("K3", "기아", 4);
 		c1.print();
 		
-		kiaCar k1 = new KiaCar("레이", 4);
-		K1.print();
+		KiaCar k1 = new KiaCar();
+		k1.brand = "기아";
+		k1.name = "레이";
+		k1.print();
 		
-		HyundaiCar h1 = new HyundaiCar("아반떼",  4);
-		h1/print();
-		
+		HyundaiCar h1 = new HyundaiCar();
+		h1.brand = "현대";
+		h1.name = "아반떼";
+		h1.print();
 	}
 
 }
 //자동차 클래스
-class car{
-	/* 접근제어자 디폴트 */ String name, brand;
-	int wheelCount;
+class Car{
+	/* 접근제어자 디폴트 */
+	String name, brand;
+	int wheelCount; //바퀴 수
 	boolean power;
 	int speed;
 	
@@ -31,12 +34,16 @@ class car{
 	void speed(int speed) {
 		this.speed += speed; 
 	}
+	
+	//생성자
 	public Car(String name, String brand, int wheelCount) {
 		this.name = name;
 		this.brand = brand;
 		this.wheelCount = wheelCount;
 	}
-	public Car() {}
+
+	public Car() {} //51번째줄 빨갛게 안뜨게 하기 위해서 코드 단순하게 입력만 해놓음
+	
 	public void print() {
 		System.out.println("회사 : " + brand);
 		System.out.println("차명 : " + name);
@@ -44,37 +51,37 @@ class car{
 }
 //기아차 클래스 : 기아자동차는 자동차이다.
 class KiaCar extends Car{
+
+	public String name;
 	/*
-	 * public kiaCar(){ super(
-	 */
-	public KiaCar(String name, int wheelcountl) {
-		brand = "현대";
-		this.name = name;System.out.println("회사 : " + brand);
+	 * public KiaCar() {
+		super(" ", "기아", 4);
 	}
+	*/
+	
 }
 
 //현대차 클래스 : 현대자동차는 자동차이다.
 class HyundaiCar extends Car{
-	public HyundaiCar(String name, int wheelCount) {
-		super(name, "현대", wheelCount);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
 	
 }
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
