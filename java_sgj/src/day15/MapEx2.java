@@ -58,8 +58,10 @@ public class MapEx2 {
 			case 3:
 				System.out.println("프로그램 종료합니다.");
 				break;
+				
 			default:
 				System.out.println("잘못된 메뉴입니다.");
+				
 			}
 		}while(menu != 3);
 	}
