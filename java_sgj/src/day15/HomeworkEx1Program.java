@@ -148,8 +148,12 @@ public class HomeworkEx1Program implements HProgram {
 		newWd.setMeaning(wd.getMeaning());
 		
 		//기존 단어 정보를 삭제
+		list.remove(index);
 		
 		//수정할 단어 정보를 리스트에 추가
+		list.add(newWd);
+		
+		System.out.println("단어 정보가 수정되었습니다.");
 	}
 
 
