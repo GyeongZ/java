@@ -27,3 +27,4 @@ replay_pid*
 .project
 java_sgj/.gitignore
 /bin/
+/.metadata/
