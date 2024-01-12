@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 관련 속성</title>
+    <style>
+    /*  border-style
+        - 테두리 종류
+        border-widtj
+        - 테두리 두께
+        border-color
+        - 테두리 색상
+        border
+        - 두께; 종류; 색상; 을 한번에 쓰는 속성
+    */
+    [class^=box]{width: 150px; height: 150px; margin: 10px; background-color: bisque;}
+    .box1{
+        border-width: 1px;
+        border-top-style: solid;
+        border-bottom-style: dashed;
+        border-right-style: dotted;
+        border-left-style: double;
+        /* 위 4개의 속성과 아래 속성 값이 같은 결과임. 위 -> 오른쪽 -> 아래 -> 왼쪽순*/
+        border-style: solid dotted dashed double;
+
+        /* 오른쪽과 왼쪽이 대칭인 경우 (두가지 모두 같음)*/
+        border-style: solid dotted dashed dotted;
+        border-style: solid dotted dashed;
+
+        /* 좌우가 대칭이고 상하가 대칭인 경우 (두가지 모두 같음)*/
+        border-style: solid dotted solid dotted;
+        border-style: solid dotted;
+
+        /* 상하 좌우가 모두 같은 경우 (두가지 모두 같음) (가장 마지막 적은게 최종 실행)*/
+        border-style: solid solid solid solid;
+        border-style: solid;
+    }
+    .box2{
+        border-style: solid; /*2가지가 같이 있을 경우 마지막꺼가 최후 적용됨*/
+        border-width: 10px 20px 30px 40px;
+        border-width: 10px;
+    }
+    .box3{
+        border-style: solid;
+        border-color: red green blue gray;
+    }
+    .box4{
+        border-top: 10px solid red;
+        
+        border: 10px solid red;
+    }
+    .box5{
+        border-style: hidden solid solid solid;
+        border-width: 1px;
+        /* 또는 강사님 하신것*/
+        border: 10px solid red;
+        border-top: none;
+    }
+    .box6{
+        border-style: solid none hidden none;
+        border-width: 3px;
+        /* 또는 강사님 하신것*/
+        border-top: 10px solid red;
+    }
+    .box7{
+        border: 10px solid red;
+        /* border-radius : 50px */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 40px;
+        /* 아래와 같은 말 */
+        border-radius: 10px 20px 30px 40px;
+    }
+    .box8{
+        border: 10px solid red;
+        border-radius: 50%;
+        /* %로도 수치 조절 가능 => 정사각형에서 50%는 원이 됨 */
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box4">4</div>
+    <!-- 왼쪽, 오른쪽, 아래는 실선, 위에는 테두리가 없는 박스를 만들기 위해 스타일을 적용 -->
+    <div class="box5">5</div>
+    <!-- 위쪽만 실선 테두리를 적용 -->
+    <div class="box6">6</div>
+    <!-- 둥근 테두리 예제1 -->
+    <div class="box7">7</div>
+    <!-- 둥근 테두리 예제2 -->
+    <div class="box8">8</div>
+    
+</body>
+</html>
