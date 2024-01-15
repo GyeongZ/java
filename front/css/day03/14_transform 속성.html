@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform 속성</title>
+    <style>
+        /*  transform
+            - 다양한 함수들을 이용하여 요소를 변형시키는 속성 
+            - 함수
+                - translate??? : 요소를 이동 (???에 이동할 것을 적음 ex)X, Y, Z, or ~px)
+                - scale??? : 요소를 비율에 맞춰 크기를 변경
+                - rotate??? : 요소를 기준에 맞게 회전 (실제 요소 크기와 모영이 변경되지 않음. 변경되어 보일 순 있음 (xyz로 기울였을때 정면에서 보이는 각도때문에))
+                - skew??? : 요소를 비틀어 모양을 변경
+
+            perspective
+            - 3D 변환을 적용할 때 원근 효과를 조절할 때 사용하는 속성.
+            - 값이 클수록 더 멀리 있는 것처럼 보임, 작을수록 가까이 있는 것처럼 보임(라이노에서 뷰 퍼스펙티브뷰 처럼?)
+
+            perspective-origin
+            - 3D 원근에 대한 시점을 조절하는 속성.
+            - x축, y축 위치를 지정, 기본은 50%, 50%으로 중심을 의미함.
+
+            transform-origin
+            - transform 속성을 이용하여 요소를 변형할 때 기준점을 설정하는 속성
+
+            transform-style
+            - 부모 요소에 적용한 변형을 하위 요소에 적용하는 속성
+            - flat : 하위 요소를 평면으로 처리
+            - perserve-3D : 하위 요소들에 3D 효과를 적용
+            
+            backface-visivility
+            - 회전하여 뒷면이 보일 경우 보이게 할건지, 말건지를 설정하는 속성
+            - hidden : 안보임
+            - visible : 보임
+         */
+        .container{
+            height: 200px; width: 500px; border: 1px solid black;
+           /* perspective: 500px; perspective-origin: 50% 50%; */
+        }
+        .box{ background-color: red; width:  400px; height: 50px;}
+        .translate .box1{ transform: translate(100px, 100px);}
+        .translate .box2{ transform: translateX(50%);}
+        .translate .box3{ transform: translateZ(100px);}
+
+        .scale .box{background: gray;}
+        .scale .box1{ transform: scale(2, 3);transform-origin: 0 0;} /*origin 이라는게 0, 0 위치를 기준으로 라는 것*/
+        .scale .box2{ transform: scaleX(2); transform-origin: 0 0;}
+
+        .rotate .box{background: pink;}
+        .rotate .box1{transform: rotateX(45deg);transform-origin: 0 0;}
+        .rotate .box2{transform: rotateY(45deg);transform-origin: 0 0;}
+        .rotate .box3{transform: rotateZ(45deg);transform-origin: 0 0;}
+
+        .skew .box{background-color: black;}
+        .skew .box1{transform: skewX(30deg);}
+        .skew .box2{transform: skewY(30deg);}
+        .skew .box3{transform: skewZ(30deg);}
+
+        .backface .box{
+            background: url(https://product.cdn.cevaws.com/var/storage/images/media/adaptil-2017/images/www-ww/shutterstock_395310793-3-2/3547034-1-www-WW/shutterstock_395310793-3-2.jpg);
+            background-size: 200px 200px;
+        }
+        .backface .box1{
+            transform: rotateY(180deg); transform-origin: 100px,0;
+            width: 200px; height: 200px; backface-visibility: hidden; /* 지금 180도로 돌려서 사진의 뒷장이 보이므로 hidden으로 설정했기 때문에 사진의 뒷면인 하얀색이 보임*/
+        }
+        .backface .box1{
+            transform: rotateY(135deg); transform-origin: 100px,0;
+            width: 200px; height: 200px; backface-visibility: visible; /* 지금 180도로 돌려서 사진의 뒷장이 보이므로 hidden으로 설정했기 때문에 사진의 뒷면인 하얀색이 보임*/
+        }
+
+        .container.style{
+            perspective: 800px;
+        }
+        .style .box1{
+            width: 100px; height: 100px;
+            background-color: red; margin: 0 auto; /* margin :  요소를 가운데 맞줌*/
+            transform: rotate(0deg);
+            transition: transform 5s;
+        }
+        .style .box:hover{ transform: rotateY(180deg);}
+        .style .box:hover span{transform: rotateZ(180deg); transition: transform 10s;}
+        .style .box1{transform: flat;}
+        .style .box2{transform-style: preserve-3d;}
+    </style>
+</head>
+<body>
+    <div class="container translate">
+        <div class="box box1"></div>
+    </div>
+    <div class="container translate">
+        <div class="box box2"></div>
+    </div>
+    <div class="container translate">
+        <div class="box box3"></div>
+    </div>
+
+    <div class="container scale">
+        <div class="box box1"></div>
+    </div>
+    <div class="container scale">
+        <div class="box box2"></div>
+    </div>
+
+    <div class="container rotate">
+        <div class="box box1"></div>
+    </div>
+    <div class="container rotate">
+        <div class="box box2"></div>
+    </div>
+    <div class="container rotate">
+        <div class="box box3"></div>
+    </div>
+
+    <div class="container skew">
+        <div class="box box1"></div>
+    </div>
+    <div class="container skew">
+        <div class="box box2"></div>
+    </div>
+    <div class="container skew">
+        <div class="box box3"></div>
+    </div>
+    
+    <div class="container backface">
+        <div class="box box1"></div>
+    </div>
+
+    <div class="container style">
+        <div class="box box1"></div>
+    </div>
+    <div class="container style">
+        <div class="box box2"></div>
+        <span>text</span>
+    </div>
+ 
+</body>
+</html>
