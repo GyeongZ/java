@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+</head>
+<body>
+    <script>
+        //함수 표현식 이용한 함수 선언
+
+        /* 기존에 쓰던 함수
+        var sum = function(num1, num2){
+            return num1 + num2;
+        }
+        */
+       
+        //화살표 함수를 사용하는 함수
+        var sum = (num1, num2)=>num1 + num2;
+        document.write(sum(1,2));
+
+        //setInterval([매개변수로] 함수, 시간 [와야함]) : 일정 시간마다 주어진 작업을 실행
+
+        setInterval(()=>console.log(123),1000);
+
+        /* 화살표 함수 안쓰고 기존에 쓰던 함수
+        setInterval(function()){
+            console.log(123);
+        }, 1000);
+        */
+    </script>
+</body>
+</html>
