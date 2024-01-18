@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제2</title>
+</head>
+<body>
+    <script>
+        /*
+        두 정수를 입력 받아 두 정수의 합을 브라우저 화면에 출력하는 예제
+        */
+        var num1 = (prompt("첫번째 정수를 입력하세요", 0));
+        var num2 = (prompt("두번째 정수를 입력하세요", 0));
+        //document.write(`입력한 두 정수의 합은 ${num1 + num2}입니다.`); 이렇게 하면 num1과 num2가 그냥 붙어서 나오므로 ex) (num1 = 1) + (num2 =2) = 12
+        num1 = +num1;
+        num2 = +num2;
+        // 추가로 취소를 입력하거나 그러면 null을 안정적이게 추가해놓는다
+        num1 = num1 ?? 0;
+        num2 = num2 ?? 0;
+        document.write(`${num1??0} + ${num2} = ${num1 + num2}`);
+
+        var str = "123abc";
+        console.log(`+${str} = ${+str}`);
+        console.log(`Number(${str}) = ${Number(str)}`);
+        console.log(`parseInt(${str}) = ${parseInt(str)}`);
+
+        /*
+        - 문자열을 숫자로 변경하는 방법
+            1. +연산자 : 변환이 불가능한 문자열이 포함되어 있으면 NaN
+            2. Number(문자열) : 변환이 불가능한 문자열이 포함되어 있으면 NaN
+            3. parseInt(문자열) / parseFloat(문자열) : 변환이 가능한 문자열까지만 숫자로 변환 
+        */
+    </script>
+</body>
+</html>
