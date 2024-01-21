@@ -1,8 +1,7 @@
 package word;
 
-public class wordMain {
+public class WordMain {
 
-	public static void main(String[] args) {
 		/* 영어 단어장을 관리하는 프로그램을 작성하세요.
 		 * 기한은 1/5까지 github에 업로드 후 강사에게 공유(단톡방)
 		 * 
@@ -43,6 +42,9 @@ public class wordMain {
 		 * - 추가기능 오답 노트 초기화
 		 * 		- 오답 노트를 비워줌 
 		 */
+		public static void main(String[] args) {
+			WordProgram wp = new WordProgram();
+			wp.run();
 	}
 
 }
