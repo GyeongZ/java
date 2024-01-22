@@ -1,5 +1,6 @@
 package word;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -103,7 +104,9 @@ public class Word {
 		this.word = word;
 	}
 	public Word(String word2, String partOfSpeech, String mean) {
-		// TODO Auto-generated constructor stub
+		this.word = word;
+		meanList = new ArrayList<Mean>();
+		meanList.add(new Mean(partOfSpeech, mean));
 	}
 	
 	

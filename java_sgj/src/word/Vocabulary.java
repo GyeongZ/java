@@ -31,8 +31,41 @@ public class Vocabulary {
 			list.get(index).addMean(partOfSpeech, mean);
 			return true;
 		}
+		//새로 추가된 단어이면
+		list.add(new Word(word, partOfSpeech, mean));
+		
 		return true;
 	}
 	
+	//단어 수정 기능
+	public boolean setWord(String oldWord, String newWord) {
+		
+		//list가 없으면
+		if(list == null) {
+			return false;
+		}
+		//이미 등록된 단어이면
+		if(list.contains(new Word(newWord))) {
+			return false;
+		}
+		//수정할 단어가 없는 단어이면
+		int index = list.indexOf(new Word(oldWord));
+		if(index < 0) {
+			return false;
+		}
+		//수정
+		list.get(index).setWord(newWord);
+		return true;
+	}
+	
+	//단어 삭제 기능
+	public boolean remoneWord(String word) {
+		//리스트가 비어있으면
+		if(list == null) {
+			return false;
+		}
+		//삭제 후 삭제 여부를 리턴
+		return list.remove(new Word(word));
+	}
 
 }
