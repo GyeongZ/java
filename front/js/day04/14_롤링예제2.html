@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강사님_롤링예제1</title>
+    <style>
+        .container{
+            width: 300px; border: 5px solid black;
+        }
+        .content-box{
+            width: 200%; background-color: antiquewhite;
+        }
+        .box1{
+            float: left; height: 50px; width: 50%;
+            transition: margin-left 1s;
+        }
+        .content-box::after{
+            clear:both; content: ''; display: block;
+        }
+        .box2{background-color: blueviolet;}
+        .left{
+            animation: moveLeft 1s forwards;
+        }
+        .right{
+            animation: moveRight 1s forwards;
+        }
+        @keyframes moveLeft{
+            from{
+                margin: 0px;
+            }
+            to{
+                margin-left: -300px;
+            }
+        }
+        @keyframes moveRight{
+            from{
+                margin-left: -300px;
+            }
+            to{
+                margin-left: 0px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <div class="box">1</div>
+            <div class="box">2</div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button id="prevBtn"><</button>
+        <button id="nextBtn">></button>
+    </div>
+
+    <script>
+        let prevBtn = document.getElementById("prevBtn");
+        let nextBtn = document.getElementById("nextBtn");
+        let firstBox = document.getElementsByClassName("box")[0];
+        let contentBox = document.getElementsByClassName("content-box");
+
+        prevBtn.onclick = function(){
+            firstBox.classList.remove("right")
+            firstBox.classList.add("left");
+        }
+
+        nextBtn.onclick= function(){
+            firstBox.classList.remove("left")
+            firstBox.classList.add("right")
+        }
+        function isAnimateRunning(element){ //요소가 애니메이션 중인지 아닌지 확인하는 메서드
+            let style = window.getComputedStyle(element);
+            return style.animationPlayState == "running";
+        }
+    </script>
+</body>
+</html>
