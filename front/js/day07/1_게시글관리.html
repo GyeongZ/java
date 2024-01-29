@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 관리</title>
+    <style>
+        .container{
+            max-width: 500px; margin: 0 auto;
+        }
+        .input-box{
+            margin-top: 10px;
+        }
+        .input-box>.label{
+            display: block;
+        }
+        .input-box>.input{
+            display: block; width: 100%; height: 30px;
+            border-radius: 5px; border: 1px solid black;
+            margin-top: 5px; padding-left: 10px; box-sizing: border-box;
+        }
+        .input-box>.text-area{
+            height: 200px;
+        }
+        .btn{
+            width: 100%; box-sizing: border-box; background-color: wheat;
+            border: 1px solid saddlebrown; border-radius: 5px; margin-top: 10px;
+            margin: 10px; height: 30px; line-height: 28px; display: block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="" class="container">
+        <h1>게시글 등록</h1>
+        <div class="input-box">
+            <label for="title" class="label">제목:</label>
+            <input type="text" name="title" id="title"  class="input" placeholder="제목을 입력하세요.">
+        </div>
+        <div class="input-box">
+            <label for="writer" class="label">작성자:</label>
+            <input type="text" name="writer" id="writer"  class="input" placeholder="작성자를 입력하세요.">
+        </div>
+        <div class="input-box">
+            <label for="content" class="label">내용:</label>
+            <textarea name="content" id="content" rows="10" class="input text-area" placeholder="내용을 입력하세요."></textarea>
+        </div>
+
+        <button class="btn"></button>
+    </form>
+</body>
+</html>
