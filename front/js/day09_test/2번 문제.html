@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신경재_UI 구현 2번 문제</title>
+    
+    <script src="//code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>    
+    
+    <style>
+        .container{
+            border: 1.5px solid gray; background-color: ghostwhite;
+            width: 300px; height: 400px;
+            margin-left: auto; margin-right: auto;
+        }
+        .id .pwd .pwd2 .email .address{
+           text-align: left;
+        }
+
+        .input{
+            width:100px; border-style:none none dashed none;
+            background-color: ghostwhite;
+        }
+        .btn-submit{
+            background-color: yellowgreen; color: green;
+            border: 0; display: flex;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    
+    <!-- <input type="text" class="input" onblur="alert(1)"> -->
+
+    <form action="" class="container">
+        
+        <div class="input-group">
+            <label for="id">아이디</label>
+            <input type="text" name="id" id="id" class="input">
+          
+        </div>
+        <div class="input-group">
+            <label for="password">패스워드</label>
+            <input type="text" name="pw" id="pwd" class="input">
+          
+        </div>
+        <div class="input-group">
+            <label for="password">패스워드 확인</label>
+            <input type="text" name="pw2" id="pwd2" class="input">
+        </div>
+        <div class="input-group">
+            <label for="">이메일</label>
+            <input type="text" name="email" id="email" class="input">
+        </div>
+        <div class="input-group">
+            <label for="">주소</label>
+            <input type="text" name="address" id="address" class="input">
+            <br>
+            <input type="text" name="address" id="address" class="input">
+        </div>
+        <br>
+        <button class="btn-submit">가입</button>
+    </form>
+
+    <script>
+        let input = document.querySelector(".input");
+        input.onblur = function(){
+            alert("영문자 대/소문자 특수문자, 숫자 포함 8~32자")
+        };
+        $("").blur(function(){
+
+        });
+
+        $("form").validate({
+            //유효성 검사
+            rules : {
+                id : {
+                    required : true,
+
+                },pw : {
+                    required : true,
+
+                },pw2 : {
+                    required : true,
+                }
+            },
+            //유효성 검사 실패시 출력할 문구
+            messages : {
+                id : {
+                    required : "필수 항목입니다."
+                },
+                pw : {
+                    required : "필수 항목입니다."
+                },
+                pw2 : {
+                    required : "필수 항목입니다."
+                }
+            }
+        });
+    </script>
+</body>
+</html>
