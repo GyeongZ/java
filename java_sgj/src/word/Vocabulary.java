@@ -3,7 +3,10 @@ package word;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.ToString;
+
 //단어장
+@ToString
 public class Vocabulary {
 		
 	private List<Word> list; //단어 리스트
@@ -59,13 +62,17 @@ public class Vocabulary {
 	}
 	
 	//단어 삭제 기능
-	public boolean remoneWord(String word) {
+	public boolean removeWord(String word) {
 		//리스트가 비어있으면
 		if(list == null) {
 			return false;
 		}
 		//삭제 후 삭제 여부를 리턴
 		return list.remove(new Word(word));
+	}
+
+	public boolean addMean(String word, Object partOfSpeech, String mean) {
+		return false;
 	}
 
 }
