@@ -12,7 +12,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Mean implements Serializable{
 	
-	//직렬화 할 때 serialVersionUID가 일치하는 경우만 읽어오도록 하기 위해 값으 지정
+	//직렬화 할 때 serialVersionUID가 일치하는 경우만 읽어오도록 하기 위해 값을 지정
 	private static final long serialVersionUID = 2291865063337215853L;
 	
 	private String partOfSpeech; //품사
