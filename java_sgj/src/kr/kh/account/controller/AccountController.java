@@ -2,6 +2,8 @@ package kr.kh.account.controller;
 
 import java.util.Scanner;
 
+import kr.kh.account.service.AccountService;
+
 public class AccountController {
 	
 	private Scanner scan;
@@ -45,8 +47,25 @@ public class AccountController {
 	}
 
 	private void insert() {
-		// TODO Auto-generated method stub
+		// 수입/지출 선택
+		List<Type> typeList = AccountService.getTypeList();
 		
+		for(int i = 0; i < typeList.size(); i++) {
+			System.out.println(typeList.get(i).getTy_name() + (i == typeList.size()-1?"": "/"));
+		}
+		
+		System.out.println(" 중 하나를 입력하세요.");
+		
+		// 카테고리 선택
+		List<Category> categoryList = accountService.getCategoryList();
+		
+		// 날짜
+		
+		
+		// 금액
+		
+		
+		// 내용
 	}
 
 	private void printMenu() {
