@@ -155,6 +155,15 @@ CREATE TABLE `ticketing_list` (
 	`tl_se_num`	int	NOT NULL
 );
 
+DROP TABLE IF EXISTS `price`;
+
+CREATE TABLE `price` (
+	`pr_num`	int	primary key auto_increment,
+	`pr_type`	varchar(5)	NOT NULL,
+	`pr_price`	int	NOT NULL
+);
+
+
 
 ALTER TABLE `movie` ADD CONSTRAINT `FK_age_TO_movie_1` FOREIGN KEY (
 	`mo_ag_name`
