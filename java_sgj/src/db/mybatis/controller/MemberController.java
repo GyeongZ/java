@@ -1,7 +1,9 @@
 package db.mybatis.controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import db.mybatis.model.vo.MemberVO;
 import db.mybatis.service.MemberService;
 import db.mybatis.service.MemberServiceImp;
 
@@ -30,8 +32,23 @@ public class MemberController {
 		case 1:
 			insertMember();
 			break;
+		case 4:
+			printMember();
+			break;
 		}
 	}
+	
+	private void printMember() {
+		ArrayList<MemberVO> list = memberService.getMemberList();
+		if(list.size() == 0) {
+			System.out.println("등록된 회원이 없습니다.");
+			return;
+		}
+		for(MemberVO tmp : list) {
+			System.out.println(tmp);
+		}
+	}
+	
 	private void insertMember() {
 		System.out.println("아이디 : ");
 		String id = scan.next();
@@ -39,6 +56,12 @@ public class MemberController {
 		String pw = scan.next();
 		System.out.println("이메일 : ");
 		String email = scan.next();
+		MemberVO member = new MemberVO(id, pw, email);
+		if (memberService.insertMember(member)){
+			System.out.println("회원을 추가했습니다.");
+		}else {
+			System.out.println("회원 추가에 실패했습니다.");
+		}
 	}
 
 }
