@@ -2,6 +2,8 @@ package kr.kh.account.main;
 
 import java.util.Scanner;
 
+import kr.kh.account.controller.AccountController;
+
 
 
 public class main {
@@ -15,7 +17,7 @@ public class main {
 		do {
 			printMenu();
 			menu = scan.nextInt();
-			runMenu(menu)
+			runMenu(menu);
 		}while(menu != 2);
 	}
 
