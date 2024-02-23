@@ -15,6 +15,9 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
+  	<!-- 매퍼 파일들 하나씩 불러옴 -->
+	<mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
+	<mapper resource="kr/kh/app/dao/BoardMapper.xml"/>
+   
   </mappers>
 </configuration>
