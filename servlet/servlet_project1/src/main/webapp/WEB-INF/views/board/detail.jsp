@@ -41,8 +41,13 @@
 	   		<textarea rows="10" class="form-control" id="content" name="content" readonly >${board.bo_content}</textarea>
 		</div>
 		<a href="<c:url value="/board/list"/>" class="btn btn-outline-dark">목록으로</a>
+		
+		<!-- c;if로 삭제버튼은 로그인 한 사람만 볼 수 있도록 처리 -->
+		<c:if test="${board.bo_me_id == user.me_id }">
+		<a href="<c:url value="/board/delete?num=${board.bo_num }"/>" class="btn btn-outline-danger">삭제</a>	
+		</c:if>	
 	</div>
-	${board}
+	
 </div>
 </body>
 </html>
