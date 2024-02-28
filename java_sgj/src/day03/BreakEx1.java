@@ -9,13 +9,22 @@ public class BreakEx1 {
 		// 문자를 입력해서 입력한 문자를 출력하고, q를 입력하면 종료하는 예제
 		Scanner scan = new Scanner(System.in);
 		
-		char ch = 'a';
-		while(ch != 'q') {
-			System.out.println("문자 입력 : ");
-			ch = scan.next().charAt(0);
-			System.out.println("문자 : " + ch);
-			if(ch == 'q') {
+		int k = 1;
+		
+		while(k != 0) {
+			
+			for(int i = 1; i<10; i++) {
+    			int sum = 2*i;
+    			System.out.println( 2 + "x" + i + "=" + sum);
+    		}
+			System.out.print("숫자 입력 : ");
+			k = scan.nextInt();
+			System.out.println("숫자: " + k);
+			
+			if(k == 0) {
+				System.out.println("끝났습니다.");
 				break;
+				
 			}
 		}
 		scan.close();		
