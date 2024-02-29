@@ -82,14 +82,14 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.updateView(num);
 	}
 
-	@Override
+	@Override // 매개변수는 null 체크 꼭 하기
 	public boolean deleteBoard(int num, MemberVO user) {
 		if(user == null) {
 			return false;
 		}
 		// 다오에게 게시글 번호를 주면서 게시글을 가져오라고 시킴
 		BoardVO board = boardDao.selectBoard(num);
-		// 게시글이 없거나 게시글 작성자와 회원 아이디가 다르면 false를 반환
+		// 게시글이 없거나 게시글 작성자와 회원 아이디가 다르면 false를 반환 (! not연산자 주의!)
 		if(board == null || !board.getBo_me_id().equals(user.getMe_id())) {
 			return false;
 		}
