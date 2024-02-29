@@ -39,11 +39,13 @@ public class BoardListServlet extends HttpServlet {
 		// 검색어, 검색타입에 맞는 전체 게시글 개수를 가져옴
 		int totalCount = boardService.gerTotalCount(cri);
 		PageMaker pm = new PageMaker(5, cri, totalCount);
+		// 생성한 객체를 화면에 전달
 		request.setAttribute("pm", pm);
 		
-		// 현재 페이지 정보에 맞는 게시글 리스트
+		// 현재 페이지 정보에 맞는 게시글 리스트 (서비스에게 현재 페이지 정보를 주면서 게시글 리스트를 달라고 요청)
 		ArrayList<BoardVO> list = boardService.getBoardList(cri); // 매게변수로 cri를 넘겨줌
-		request.setAttribute("list", list); // 화면에 전송
+		// 화면에 게시글 리스트를 전송 : 화면에서 사용할 이름 = List
+		request.setAttribute("list", list); 
 		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
 	}
 }

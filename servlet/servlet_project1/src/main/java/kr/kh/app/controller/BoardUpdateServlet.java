@@ -1,6 +1,8 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
@@ -40,18 +43,23 @@ public class BoardUpdateServlet extends HttpServlet {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
 		// 게시글 작성자와 회원아이디가 같은지 확인
-		if(board == null || board.getBo_me_id().equals(user.getMe_id())) {
+		// 다르면 게시글 상세로 보내고, 작성자가 아닙니다 라고 메시지를 띄웁니다.
+		if(board == null ||
+			user == null ||
+			!board.getBo_me_id().equals(user.getMe_id())) {
 			request.setAttribute("msg", "작성자가 아닙니다.");
 			request.setAttribute("url", "board/detail?num="+num);
+			
+			request.getRequestDispatcher("/WEB-INF/board/message.jsp").forward(request, response);
+			return;
 		}
-		// 다르면 게시글 상세로 보내고, 작성자가 아닙니다 라고 메시지를 띄웁니다.
-		
 		// 같으면
 		// 게시판을 가져와서 화면에 전달
+		ArrayList<CommunityVO> list = boardService.getCommunityList();
 		// 서비스에게 게시판 리스트를 가져오라고 시킴
 		
 		// 게시판 리스트를 화면에 전송
-		
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/board/update.jsp").forward(request, response);
 	}
 	protected 

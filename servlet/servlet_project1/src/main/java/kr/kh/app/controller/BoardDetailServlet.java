@@ -38,7 +38,6 @@ public class BoardDetailServlet extends HttpServlet {
 		
 		// 화면을 전송
 		request.getRequestDispatcher("/WEB-INF/views/board/detail.jsp").forward(request, response);
-	
 	}
 
 
