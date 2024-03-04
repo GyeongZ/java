@@ -8,20 +8,20 @@
 		<setting name="cacheEnabled" value="false"/>
 		<setting name="localCacheScope" value="STATEMENT"/>
 	</settings>
-	  <environments default="development">
-	    <environment id="development">
-	      <transactionManager type="JDBC"/>
-	      <dataSource type="POOLED">
-	        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-	        <property name="url" value="jdbc:mysql://localhost:3306/community"/>
-	        <property name="username" value="root"/>
-	        <property name="password" value="root"/>
-	      </dataSource>
-	    </environment>
-	  </environments>
-	  <mappers>
-	  	<!-- 매퍼 파일들 하나씩 불러옴 -->
-		<mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
-		<mapper resource="kr/kh/app/dao/BoardMapper.xml"/>
-	  </mappers>
+	<environments default="development">
+	  <environment id="development">
+	    <transactionManager type="JDBC"/>
+	    <dataSource type="POOLED">
+	      <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+	      <property name="url" value="jdbc:mysql://localhost:3306/community"/>
+	      <property name="username" value="root"/>
+	      <property name="password" value="root"/>
+	    </dataSource>
+	  </environment>
+	</environments>
+  <mappers>
+    <!-- <mapper resource="kr/kh/app/dao/MemberMapper.xml"/> -->
+    <mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
+    <mapper resource="kr/kh/app/dao/BoardMapper.xml"/>
+  </mappers>
 </configuration>

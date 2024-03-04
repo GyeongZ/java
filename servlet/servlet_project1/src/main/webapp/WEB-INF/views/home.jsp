@@ -47,7 +47,6 @@
 		<c:param name="name" value="홍길동"/>
 		<c:param name="age" value="30"/>
 	</c:url>
-	4{url
 		
 	
 </div>

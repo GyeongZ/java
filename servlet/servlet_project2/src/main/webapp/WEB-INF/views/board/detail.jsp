@@ -14,7 +14,7 @@
 <div class="container">
 	<c:choose>
 		<c:when test="${board != null }">
-			<h1>게시글 상세</h1>
+			<h3 class="mb-3 mt-3">게시글 상세</h3>
 			<div class="mb-3 mt-3">
 				<label class="form-label">게시판</label>
 				<input type="text" class="form-control" readonly="readonly" value="${board.community.co_name}">

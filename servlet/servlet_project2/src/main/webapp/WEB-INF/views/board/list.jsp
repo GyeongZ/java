@@ -13,7 +13,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
 	<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
-	<h1>게시글 리스트</h1>
+	<h3 class="mb-3 mt-3">게시글 리스트</h3>
 	<!-- 
 	form태그를 이용하여 검색창을 추가
 	form태그의 action을 /board/list로 지정
