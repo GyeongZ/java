@@ -26,9 +26,13 @@ public interface BoardDAO {
 	boolean deleteBoard(@Param("num")int num);
 
 	boolean updateBoard(@Param("board")BoardVO board);
-	
+
 	void insertFile(@Param("file")FileVO file);
 
-	FileVO selectFileByBo_num(@Param("num") int num);
+	ArrayList<FileVO> selectFileByBo_num(@Param("num")int num);
+
+	void deleteFile(@Param("fi_num")int fi_num);
+
+	FileVO selectFile(@Param("fi_num")int fi_num);
 
 }
