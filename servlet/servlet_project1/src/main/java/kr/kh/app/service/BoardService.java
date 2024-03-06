@@ -12,6 +12,8 @@ import kr.kh.app.pagination.Criteria;
 
 public interface BoardService {
 
+	boolean insertBoard(BoardVO board, ArrayList<Part> partList);
+
 	ArrayList<CommunityVO> getCommunityList();
 
 	ArrayList<BoardVO> getBoardList(Criteria cri);
@@ -28,6 +30,6 @@ public interface BoardService {
 
 	ArrayList<FileVO> getFile(int num);
 
-	boolean insertBoard(BoardVO board, ArrayList<Part> partList);
+	int recommend(int bo_num, int state, MemberVO user);
 
 }

@@ -7,8 +7,12 @@
 <meta charset="UTF-8">
 <title>게시글 등록</title>
 <!-- 부트스트랩5 css/js -->
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
 
 </head>
 <body>
@@ -42,5 +46,14 @@
 	  	<button class="btn btn-outline-warning col-12">글 등록</button>
 	</form>
 </div>
+
+<script type="text/javascript">
+$('[#name=content]').summernote({
+    placeholder: '내용',
+    tabsize: 2,
+    height: 100
+  });
+</script>
+
 </body>
 </html>
