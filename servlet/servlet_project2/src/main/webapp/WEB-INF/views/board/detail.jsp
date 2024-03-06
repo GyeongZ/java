@@ -14,7 +14,7 @@
 <div class="container">
 	<c:choose>
 		<c:when test="${board != null }">
-			<h3 class="mb-3 mt-3">게시글 상세</h3>
+			<h1>게시글 상세</h1>
 			<div class="mb-3 mt-3">
 				<label class="form-label">게시판</label>
 				<input type="text" class="form-control" readonly="readonly" value="${board.community.co_name}">
@@ -35,6 +35,14 @@
 				<label for="content" class="form-label">내용</label>
 				<textarea rows="10" class="form-control" readonly>${board.bo_content }</textarea>
 			</div>
+			<c:if test="${fileList != null && fileList.size() != 0 }">
+				<div class="mb-3 mt-3">
+					<label class="form-label">첨부파일</label>
+					<c:forEach items="${fileList}" var="file">
+						<a href="<c:url value="/download?filename=${file.fi_name}"/>" download="${file.fi_ori_name}" class="form-control">${file.fi_ori_name}</a>
+					</c:forEach>
+				</div>
+			</c:if>
 		</c:when>
 		<c:otherwise>
 			<h1>없는 게시글이거나 삭제된 게시글입니다.</h1>
