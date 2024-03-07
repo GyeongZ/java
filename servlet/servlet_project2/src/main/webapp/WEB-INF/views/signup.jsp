@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="/singup"/>" metod="post">
+	<form action="<c:url value="/singup"/>" method="post">
 		<h3 class="mb-3 mt-3">회원가입</h3>
 		<div class="mb-3 mt-3">
 			<label for="id" class="form-label">아이디</label>
