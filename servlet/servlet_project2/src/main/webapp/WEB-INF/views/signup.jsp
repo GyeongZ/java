@@ -45,7 +45,7 @@
 
 		$.ajax({ //j쿼리에서 제공하는 메서드
 			url : '<c:url value="/id/check"/>',
-			metod : 'get',
+			method : 'get',
 			async : true, //동기/비동기 선택, true:비동기통신(앞에 통신 작업이 끝나기전에 실행), false:동기통신(앞에 작업이 끝나는걸 기다려서 실행)
 			data : {
 				"id" : id //속성이름 : 변수명
