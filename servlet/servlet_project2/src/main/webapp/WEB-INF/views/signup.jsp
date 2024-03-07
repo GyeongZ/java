@@ -19,6 +19,9 @@
 			<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요." name="id">
 		</div>
 		<div class="mb-3 mt-3">
+			<button type="button" id=idcheck class = "btn btn-outline-success col-12">아이디 중복 검사</button>
+		</div>
+		<div class="mb-3 mt-3">
 			<label for="pw" class="form-label">비밀번호</label>
 			<input type="password" class="form-control" id="pw" placeholder="비밀번호를 입력하세요." name="pw">
 		</div>
@@ -33,5 +36,43 @@
 		<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
 	</form>
 </div>
+<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	let flag = false;
+	$("#idCheck").click(function(){
+		
+		let id = $("[name=id]").val();
+
+		$.ajax({ //j쿼리에서 제공하는 메서드
+			url : '<c:url value="/id/check"/>',
+			metod : 'get',
+			async : true, //동기/비동기 선택, true:비동기통신(앞에 통신 작업이 끝나기전에 실행), false:동기통신(앞에 작업이 끝나는걸 기다려서 실행)
+			data : {
+				"id" : id //속성이름 : 변수명
+			},
+			success : function(data){
+				if(data){
+					alert("사용 가능한 아이디입니다.");
+					flag = true;
+				}else{
+					alert("이미 사용중인 아이디입니다.");
+				}
+			},
+			error : function(a, b, c){
+				console.error("예외 발생");
+			}
+		}); //ajax 끝
+	}); //click 끝
+	
+	$("form").submit(function(){
+		if(!flag){
+			alert("아이디 중복 검사를 해야합니다.");
+			return false;
+		}
+	})
+	$("[name=id]").change(function(){
+		flag = false;
+	})
+</script>
 </body>
 </html>
