@@ -20,10 +20,10 @@ import kr.kh.app.service.BoardServiceImp;
 
 @WebServlet("/board/update")
 @MultipartConfig(
-		maxFileSize = 1024 * 1024 * 10, //10Mb
-		maxRequestSize = 1024 * 1024 * 10 * 3, //10Mb 최대 3개
-		fileSizeThreshold = 1024 * 1024 //1Mb : 파일 업로드 시 메모리에 저장되는 임시 파일 크기
-	)
+	maxFileSize = 1024 * 1024 * 10, //10Mb
+	maxRequestSize = 1024 * 1024 * 10 * 3, //10Mb 최대 3개
+	fileSizeThreshold = 1024 * 1024 //1Mb : 파일 업로드 시 메모리에 저장되는 임시 파일 크기
+)
 public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -43,9 +43,9 @@ public class BoardUpdateServlet extends HttpServlet {
 		//게시판 리스트를 가져옴
 		ArrayList<CommunityVO> list = boardService.getCommunityList();
 		
-		// 게시글 번호를 이용하여 첨부파일 리스트를 가져옴
+		//게시글 번호를 이용하여 첨부파일 리스트를 가져옴
 		ArrayList<FileVO> fileList = boardService.getFileList(num);
-		// 가져온 첨부파일 리스트를 화면에 전송
+		//가져온 첨부파일 리스트를 화면에 전송
 		request.setAttribute("fileList", fileList);
 		
 		//게시글과 게시판 리스트를 화면에 전송
@@ -74,10 +74,11 @@ public class BoardUpdateServlet extends HttpServlet {
 		//회원 가져옴
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
-		// 삭제 할 첨부파일 번호를 가져옴
+		//삭제할 첨부파일 번호들
 		String [] nums = request.getParameterValues("fi_num");
-		// 추가 할 첨부파일들을 가져옴
-		ArrayList<Part> partList = (ArrayList<Part>)request.getParts();
+		
+		//추가할 첨부파일들을 가져옴	
+		ArrayList<Part> partList = (ArrayList<Part>) request.getParts();
 		
 		//서비스에게 회원 정보와 수정할 게시글 정보를 주면서 수정하라고 요청
 		boolean res = boardService.updateBoard(board, user, nums, partList);
@@ -94,5 +95,4 @@ public class BoardUpdateServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
-	
 }

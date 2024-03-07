@@ -141,16 +141,17 @@ public class BoardServiceImp implements BoardService {
 		}
 		
 		// 삭제할 첨부파일 삭제
-		for(String numStr : nums) {
-			try {
-				int num = Integer.parseInt(numStr);
-				FileVO fileVo = boardDao.selectFile(num);
-				deleteFile(fileVo);
-			}catch(Exception e) {
-				
+		if(nums != null) {
+			for(String numStr : nums) {
+				try {
+					int num = Integer.parseInt(numStr);
+					FileVO fileVo = boardDao.selectFile(num);
+					deleteFile(fileVo);
+				}catch(Exception e) {
+					
+				}
 			}
 		}
-		
 		// 추가할 첨부파일 추가
 		for(Part part : partList) {
 			uploadFile(part, board.getBo_num());
