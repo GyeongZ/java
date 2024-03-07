@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,21 +12,21 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="/singup"/>" method="post">
-		<h3 class="mb-3 mt-3">회원가입</h3>
+	<form action="<c:url value="/signup"/>" method="post">
+		<h1>회원가입</h1>
 		<div class="mb-3 mt-3">
 			<label for="id" class="form-label">아이디</label>
 			<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요." name="id">
 		</div>
 		<div class="mb-3 mt-3">
-			<button type="button" id=idcheck class = "btn btn-outline-success col-12">아이디 중복 검사</button>
+			<button type="button" class="btn btn-outline-success col-12" id="idCheck">아이디 중복 검사</button>
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="pw" class="form-label">비밀번호</label>
+			<label for="pw" class="form-label">비번</label>
 			<input type="password" class="form-control" id="pw" placeholder="비밀번호를 입력하세요." name="pw">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="pw2" class="form-label">비밀번호 확인</label>
+			<label for="pw2" class="form-label">비번</label>
 			<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="pw2">
 		</div>
 		<div class="mb-3 mt-3">
@@ -42,8 +42,7 @@
 	$("#idCheck").click(function(){
 		
 		let id = $("[name=id]").val();
-
-		$.ajax({ //j쿼리에서 제공하는 메서드
+		$.ajax({
 			url : '<c:url value="/id/check"/>',
 			method : 'get',
 			async : true, //동기/비동기 선택, true:비동기통신(앞에 통신 작업이 끝나기전에 실행), false:동기통신(앞에 작업이 끝나는걸 기다려서 실행)
@@ -58,12 +57,12 @@
 					alert("이미 사용중인 아이디입니다.");
 				}
 			},
-			error : function(a, b, c){
+			error : function (a, b, c) {
 				console.error("예외 발생");
 			}
-		}); //ajax 끝
-	}); //click 끝
-	
+		});//ajax 끝
+		
+	});//click 끝
 	$("form").submit(function(){
 		if(!flag){
 			alert("아이디 중복 검사를 해야합니다.");

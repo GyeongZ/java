@@ -48,7 +48,7 @@
 		</div>
 		<button type="submit" class="btn btn-outline-success col-12">수정하기</button>
 	</form>
-	<script scr="//code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="//code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
 		$(".btn-del").click(function(e){
 			e.preventDefault();
