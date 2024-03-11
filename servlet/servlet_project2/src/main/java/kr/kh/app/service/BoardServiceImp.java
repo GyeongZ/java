@@ -140,24 +140,22 @@ public class BoardServiceImp implements BoardService {
 		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
 			return false;
 		}
-		
-		// 삭제할 첨부파일 삭제
 		if(nums != null) {
+			//삭제할 첨부파일 삭제
 			for(String numStr : nums) {
 				try {
 					int num = Integer.parseInt(numStr);
 					FileVO fileVo = boardDao.selectFile(num);
 					deleteFile(fileVo);
 				}catch(Exception e) {
-					
+					e.printStackTrace();
 				}
 			}
 		}
-		// 추가할 첨부파일 추가
+		//추가할 첨부파일 추가
 		for(Part part : partList) {
 			uploadFile(part, board.getBo_num());
 		}
-		
 		
 		//서비스에게 게시글을 주면서 수정하라고 요청
 		return boardDao.updateBoard(board);
@@ -202,15 +200,15 @@ public class BoardServiceImp implements BoardService {
 
 	@Override
 	public int recommend(int boNum, int state, String me_id) {
-		switch(state) {
-		case -1,1: break;
+		switch (state) {
+		case -1, 1: break;
 		default:
 			throw new RuntimeException();
 		}
-		//회원이 게시글에 추천한 내역이 있는지 확인해서 => 없으면 추가, 있으면 수정
+		//회원이 게시글에 추천한 내역이 있는지 확인 => 없으면 추가, 있으면 수정
 		//회원이 게시글에 추천한 정보를 가져옴
 		RecommendVO recommend = boardDao.selectRecommend(boNum, me_id);
-		System.out.println(recommend);
+		
 		//없으면 추가
 		if(recommend == null) {
 			recommend = new RecommendVO(me_id, boNum, state);
@@ -223,7 +221,7 @@ public class BoardServiceImp implements BoardService {
 			recommend.setRe_state(0);
 		}
 		//변경. 추천->비추천, 비추천->추천
-		else{
+		else {
 			recommend.setRe_state(state);
 		}
 		boardDao.updateRecommend(recommend);
@@ -235,15 +233,7 @@ public class BoardServiceImp implements BoardService {
 		if(user == null || num <= 0) {
 			return null;
 		}
-		
 		return boardDao.selectRecommend(num, user.getMe_id());
 	}
-
-
-	
-	
-	
-	
-	
 	
 }
