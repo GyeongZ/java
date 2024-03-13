@@ -4,14 +4,9 @@
 <!doctype html>
 <html>
 <head>
-	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  안녕하세요? </P>
-
+	<h4>안녕하세요?</h4>
+	<h1>메인입니다.</h1>
 </body>
 </html>
