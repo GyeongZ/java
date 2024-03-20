@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -130,15 +130,30 @@ public class BoardController {
 		
 		return "message";
 	}
-	
 	@ResponseBody
 	@PostMapping("/recommend/check")
 	public Map<String, Object> 메서드명(@RequestBody RecommendVO recommend,
-			HttpSession session) {
+			HttpSession session){
 		Map<String, Object> map = new HashMap<String, Object>();
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		boolean res = boardService.recommend(recommend, user);
+		int res = boardService.recommend(recommend, user);
 		map.put("result", res);
 		return map;
 	}
+	
+	@ResponseBody
+	@PostMapping("/recommend")
+	public Map<String, Object> recommend(@RequestParam("num") int num,
+		HttpSession session){
+		Map<String, Object> map = new HashMap<String, Object>();
+		//로그인한 회원의 추천 정보
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		int state = boardService.getUserRecommend(num, user);
+		//게시글의 추천/비추천수를 가져옴
+		BoardVO board = boardService.getBoard(num);
+		map.put("state", state);
+		map.put("board", board);
+		return map;
+	}
+	
 }

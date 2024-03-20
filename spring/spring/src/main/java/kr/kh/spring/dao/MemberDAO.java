@@ -10,6 +10,10 @@ public interface MemberDAO {
 
 	MemberVO selectMember(@Param("id")String id);
 
-	boolean insertMember(@Param("member") MemberVO member);
+	boolean insertMember(MemberVO member);
+
+	void updatePassword(@Param("id") String id, @Param("pw") String encPw);
+
+	boolean updateMember(@Param("me")MemberVO member);
 
 }

@@ -8,5 +8,6 @@
 <body>
 	<h4>안녕하세요?</h4>
 	<h1>메인입니다.</h1>
+	<a href="<c:url value="/find/pw"/>">비번찾기</a>
 </body>
 </html>

@@ -23,8 +23,8 @@
 		<div class="form-control">${board.bo_view}</div>
 	</div>
 	<div class="input-group mb-3 mt-3">
-		<button class="btn btn-outline-success btn-up col-6" data-state="1">추천(${board.bo_up})</button>
-		<button class="btn btn-outline-success btn-down col-6" data-state="-1">비추천(${board.bo_down})</button>
+		<button class="btn btn-outline-success btn-up col-6" data-state="1">추천(<span class="text-up">${board.bo_up}</span>)</button>
+		<button class="btn btn-outline-success btn-down col-6" data-state="-1">비추천(<span class="text-down">${board.bo_down}</span>)</button>
 	</div>
 	<div>
 		<label>내용</label>
@@ -263,7 +263,6 @@ $(document).on('click', '.btn-comment-update', function(){
 	let contentBox = $(this).parents(".box-comment").find(".text-comment");
 	//댓글을 수정할 수 있는 textarea로 변경
 	let content = contentBox.text();
-	console.log(content)
 	let str = 
 	`<textarea class="form-control">\${content}</textarea>`;
 	contentBox.after(str);
@@ -279,15 +278,15 @@ $(document).on('click', '.btn-comment-update', function(){
 });
 
 $(document).on('click', '.btn-complete', function(){
-	// 전송할 데이터를 생성 => 댓글 수정 => 댓글에 있는 것 중 수정 가능한건 댓글 내용임 그리고 댓글 내용을 수정하려고하니 필요한 건 댓글 번호
-	// =>( 댓글 번호, [댓글 내용], 작성자, 게시글 번호) 
-	let comment ={
-			cm_content : $('.box-content').find('textarea').val(),
-			cm_num : $(this).data("num")
+	//전송할 데이터를 생성=>댓글 수정 => 댓글 번호, [댓글 내용],
+	let comment = {
+		cm_content : $('.box-comment').find('textarea').val(),
+		cm_num : $(this).data("num")
 	}
-	// 서버에 ajax로 데이터를 전송 후 처리
+	
+	//서버에 ajax로 데이터를 전송 후 처리
 	$.ajax({
-		async : true,
+		async : true, 
 		url : '<c:url value="/comment/update"/>', 
 		type : 'post', 
 		data : JSON.stringify(comment), 
@@ -317,29 +316,87 @@ function initComment(){
 <!-- 추천/비추천 -->
 <script type="text/javascript">
 $(".btn-up,.btn-down").click(function(){
-	// 서버에 보낼 데이터 생성
+	//로그인 여부를 체크
+	if(!checkLogin()){
+		return;
+	}
+	//서버에 보낼 데이터 생성
 	let state = $(this).data('state');
 	let boNum = '${board.bo_num}';
 	let recommend = {
-			re_state : state,
-			re_bo_num : boNum
+		re_state : state,
+		re_bo_num : boNum
 	}
-	// 서버에 전송 json => json
+	//서버에 전송 json=>json
 	$.ajax({
 		async : true,
 		url : '<c:url value="/recommend/check"/>', 
 		type : 'post', 
-		data : JSON.stringify(객체), 
+		data : JSON.stringify(recommend), 
 		contentType : "application/json; charset=utf-8",
 		dataType : "json", 
 		success : function (data){
-			console.log(data);
+			switch(data.result){
+			case 1:
+				alert('추천 했습니다.');
+				break;
+			case 0:
+				let str = recommend.re_state == 1 ? '추천' : '비추천';
+				alert(`\${str}을 취소했습니다.`);
+				break;
+			case -1:
+				alert('비추천 했습니다.');
+				break;
+			default:
+				alert('추천/비추천을 하지 못했습니다.');
+			}
+			getRecommend();
 		}, 
 		error : function(jqXHR, textStatus, errorThrown){
 
 		}
 	});
-})
+});
+//로그인한 회원의 추천/비추천 여부와 게시글의 추천/비추천 수를 가져오는 함수
+function getRecommend(){
+	//서버로 보낼 데이터를 생성 => 게시글 번호
+	let num = '${board.bo_num}'
+	let obj = {
+		num : num
+	}
+	//서버로 데이터를 전송. object=>json
+	$.ajax({
+		async : true, 
+		url : '<c:url value="/recommend"/>', 
+		type : 'post', 
+		data : obj, 
+		dataType : "json", 
+		success : function (data){
+			displayUpdateRecommend(data.board);
+			displayRecommend(data.state);
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	});
+}
+function displayUpdateRecommend(board){
+	$(".text-up").text(board.bo_up);
+	$(".text-down").text(board.bo_down);
+}
+function displayRecommend(state) {
+	$('.btn-up,.btn-down').addClass("btn-outline-success");
+	$('.btn-up,.btn-down').removeClass("btn-success");
+	if(state == 1){
+		$('.btn-up').removeClass("btn-outline-success");
+		$('.btn-up').addClass("btn-success");
+	}else if(state == -1){
+		$('.btn-down').removeClass("btn-outline-success");
+		$('.btn-down').addClass("btn-success");
+	}
+}
+getRecommend();
 </script>
+
 </body>
 </html>

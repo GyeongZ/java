@@ -11,6 +11,17 @@
   </select>
   <insert id="insertMember">
   	insert into member(me_id, me_pw, me_email, me_ms_state) 
-  	values(#{member.me_id}, #{member.me_pw}, #{member.me_email}, "이용 중")
+  	values(#{me_id}, #{me_pw}, #{me_email}, "이용 중")
   </insert>
+  <update id="updatePassword">
+  	update member set me_pw = #{pw} where me_id = #{id}
+  </update>
+  <update id="updateMember">
+  	update member
+  	set
+  		me_pw = #{me.me_pw},
+  		me_email = #{me.me_email}
+	where
+		me_id = #{me.me_id}
+  </update>
 </mapper>
