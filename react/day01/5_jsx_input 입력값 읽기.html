@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+	
+  
+
+   
+
+    function App(){
+        
+        let [str, setStr] = React.useState("");
+        // 함수 밖에 적어주고
+
+        function inputOnChange(event){
+            // input태그에 입력된 값을 읽어와서 콘솔에 출력 (객체 event)
+            let value = event.target.value;
+            // value 는 이벤트가 발생된 객체를 가져온다.
+            // console.log(value); 콘솔에 한글자씩 치는것 다 나옴
+           setStr(value);
+           // state는 set으로 가져옴
+        }
+
+        return(
+            <div>
+                <input type="text" onChange={inputOnChange} />
+                <h1>{str}</h1>
+            </div>
+        )
+    }
+    
+    root.render(<App />);
+
+</script>
+</body>
+</html>
