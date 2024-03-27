@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx 복습</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+   
+    const root = ReactDOM.createRoot(document.getElementById("root")); 
+    
+    // App 컴포넌트 : 여러 단위를 변환할 수 있는 화면
+    function App(){    
+        let [choice, setChoice] = React.useState("");
+        return(
+            <div>
+                <select onChange={e=>setchoice(e.target.value)}>
+                    <option value="time">minute &lt; = &gt; hour</option>
+                    <option value="time">m &lt; = &gt; km</option>
+                </select>
+                {choice == ""? <h3>변환기 종류를 선택하세요.</h3>:null}
+                {choice == "time"? <ConverterTime/>:null}
+                {choice == "distance"? <ConverterDistance/>:null}
+            </div>
+        );
+    };
+
+    // 분(m) -> 시간(h)
+    function ConverterTime(){
+
+        let [amount, setAmount] = React.useState(0);
+        let [flag, setFlag] = React.useState(false);
+
+        return (
+            <div>
+                <h5>시간 계산기</h5>
+                <input type="text" onChange={(e)=>setAmount(e.target.value)} disable={flag} value={!flag?amount:amount*60}/>분
+                <br/>
+                <button onClick={()=>{setFlag(!flag); setAmount(0);}}>토글</button>
+                <br/>
+                <input type="text" onChange={(e)=>setAmount(e.target.value)} disabled={!flag} value={!flag?Math.floor(amount/60):amount}/> 시간
+            </div>
+        );
+    }
+
+    // 미터(m) -> 키로미터(km)
+    function ConverterDistance(){
+
+        let [amount, setAmount] = React.useState(0);
+        let [flag, setFlag] = React.useState(false);
+
+        return (
+            <div>
+                <h5>거리 계산기</h5>
+                <input type="text" onChange={(e)=>setAmount(e.target.value)} disable={flag} value={!flag?amount:amount*1000}/>미터(m)
+                <br/>
+                <button onClick={()=>{setFlag(!flag); setAmount(0);}}>토글</button>
+                <br/>
+                <input type="text" onChange={(e)=>setAmount(e.target.value)} disabled={!flag} value={!flag?amount/1000:amount}/> 키로미터(km)
+            </div>
+        );
+    }
+        
+    root.render(<App />)
+   
+</script>
+</body>
+</html>
