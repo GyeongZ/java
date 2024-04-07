@@ -1,0 +1,16 @@
+// 변수선언
+$num01: 100px;
+$num02: 100%;
+$index: -1;
+
+// 적용
+h1{ width: 200px; background-color: pink;}
+h1:nth-child(1){width: $num01;}
+h1:nth-child(2){width: $num02;}
+
+h1:nth-child(4){
+    background-color: aquamarine;
+    position: relative;
+    left: 50px; top: -50px;
+    z-index: $index;
+}

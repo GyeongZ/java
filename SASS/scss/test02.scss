@@ -1,0 +1,19 @@
+// 변수선언
+$myFont : '맑은 고딕', sans-serif;
+$mycolor:pink;
+$bigFontSize: 30px;
+$baseFontSize: 14px;
+$boxWidth: 500px;
+
+body{
+    font-family: $myFont;
+    font-size: $baseFontSize;
+    color: $mycolor;
+}
+h1{
+     font-size: $bigFontSize;
+}
+div{
+    width: $boxWidth;
+    background-color: $mycolor;
+}

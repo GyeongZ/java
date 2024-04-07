@@ -1,0 +1,19 @@
+// 전역변수
+$mycolor: red;
+
+h1{
+    // 지역변수
+    $titleColor: green;
+    color: $titleColor;
+    // 글로벌
+    $globalColor: yellow !global; // !global 을 붙여서 전역변수로 변경됨
+
+}
+p{
+    //color: $titleColor 사용 불가능
+    // 다른 지역의 변수를 사용할 수 없음
+    color: $mycolor;
+}
+div{
+    color: $globalColor;
+}

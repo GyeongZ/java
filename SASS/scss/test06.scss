@@ -1,0 +1,9 @@
+// 변수선언
+$color01:red;
+$color02:#00FF00;
+$color03: rgb(0,0,255);
+
+// 적용
+h1:nth-child(1){color: $color01; }
+h1:nth-child(2){color: $color02; }
+h1:nth-child(3){color: $color03; }
