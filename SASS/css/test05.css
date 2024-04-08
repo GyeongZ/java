@@ -1,0 +1,20 @@
+h1 {
+  width: 200px;
+  background-color: pink;
+}
+
+h1:nth-child(1) {
+  width: 100px;
+}
+
+h1:nth-child(2) {
+  width: 100%;
+}
+
+h1:nth-child(4) {
+  background-color: aquamarine;
+  position: relative;
+  left: 50px;
+  top: -50px;
+  z-index: -1;
+}

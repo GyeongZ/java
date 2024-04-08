@@ -1,0 +1,18 @@
+// 보간 실습 테스트
+
+// 변수선언
+$basicFont01: Dongle;
+$basicFont02: Gugi;
+$font01: 'Dongle', sans-serif;
+$font02: 'Gugi', sans-serif;
+
+$name01:red;
+$name02:green;
+$name03:blue;
+
+@import url('https://fonts.googleapis.com/css2?family=#{$basicFont02}&display=swap');
+
+h1{ font-family: $font02;}
+.title_#{$name01}{color:$name01;}
+.title_#{$name02}{color:$name02;}
+.title_#{$name03}{color:$name03;}

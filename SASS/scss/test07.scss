@@ -1,0 +1,8 @@
+// map변수선언
+$weight:(
+    'regular' : 400, 'medium':500, "bold":600
+);
+// 적용
+h1:nth-child(1){font-weight: map-get($weight, 'regular' );}
+h1:nth-child(2){font-weight: map-get($weight, 'medium' );}
+h1:nth-child(3){font-weight: map-get($weight, "bold" );}

@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+h1 {
+  font-family: "Gugi", sans-serif;
+}
+
+.title_red {
+  color: red;
+}
+
+.title_green {
+  color: green;
+}
+
+.title_blue {
+  color: blue;
+}

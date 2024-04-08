@@ -1,0 +1,11 @@
+h1:nth-child(1) {
+  font-weight: 400;
+}
+
+h1:nth-child(2) {
+  font-weight: 500;
+}
+
+h1:nth-child(3) {
+  font-weight: 600;
+}
