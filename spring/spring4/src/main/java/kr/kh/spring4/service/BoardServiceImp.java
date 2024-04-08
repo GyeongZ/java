@@ -62,17 +62,18 @@ public class BoardServiceImp implements BoardService {
 
 	@Override
 	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
-		if(board == null || board.getBo_title() == null || board.getBo_content()==null) {
+		if( board == null || 
+			board.getBo_title() == null || 
+			board.getBo_content() == null) {
 			return false;
 		}
 		if(user == null)
 			return false;
 		board.setBo_me_id(user.getMe_id());
-		boolean res =  boardDao.insertBoard(board);
+		boolean res = boardDao.insertBoard(board);
 		log.info(board);
-		if(!res) {
+		if(!res)
 			return false;
-		}
 		if(files == null || files.length == 0)
 			return true;
 		for(MultipartFile file : files) {
@@ -82,7 +83,23 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public ArrayList<CommunityVO> getCoummunityList() {
+	public ArrayList<CommunityVO> getCommunityList() {
 		return boardDao.selectCommunityList();
 	}
+
+	@Override
+	public void updateView(int num) {
+		boardDao.updateView(num);
+	}
+
+	@Override
+	public BoardVO getBoard(int num) {
+		return boardDao.selectBoard(num);
+	}
+
+	@Override
+	public ArrayList<FileVO> getFileList(int num) {
+		return boardDao.selectFileList(num);
+	}
+
 }

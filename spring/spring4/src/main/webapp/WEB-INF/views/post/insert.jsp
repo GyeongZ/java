@@ -4,7 +4,6 @@
 <!doctype html>
 <html>
 <head>
-	<title>게시글 등록</title>
 </head>
 <body>
 <div class="container">

@@ -37,7 +37,7 @@
 				<tr>
 					<td>${pm.totalCount - vs.index - pm.cri.pageStart }</td>
 					<td>
-						<a href="#">${post.bo_title}</a>
+						<a href="<c:url value="/post/detail?num=${post.bo_num }"/>"/>${post.bo_title}</a>
 					</td>
 					<td>${post.bo_me_id }</td>
 					<td>${post.bo_view }</td>
@@ -82,7 +82,7 @@
 			</li>
 		</c:if>
 	</ul>
-	<a href="<c:url value="/post/insert"/>" class="btn btn-outline-sucess">글 쓰기</a>
+	<a href="<c:url value="/post/insert"/>" class="btn btn-outline-success">글 쓰기</a>
 </div>
 <script type="text/javascript">
 $("[name=order]").change(function(){

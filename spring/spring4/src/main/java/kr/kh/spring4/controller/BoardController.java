@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring4.model.vo.BoardVO;
 import kr.kh.spring4.model.vo.CommunityVO;
+import kr.kh.spring4.model.vo.FileVO;
 import kr.kh.spring4.model.vo.MemberVO;
 import kr.kh.spring4.pagination.Criteria;
 import kr.kh.spring4.pagination.PageMaker;
@@ -39,13 +40,13 @@ public class BoardController {
 	
 	@GetMapping("/post/insert")
 	public String postInsert(Model model) {
-		ArrayList<CommunityVO> list = boardService.getCoummunityList();
+		ArrayList<CommunityVO> list = boardService.getCommunityList();
 		model.addAttribute("list", list);
 		model.addAttribute("title", "게시글 등록");
 		return "/post/insert";
 	}
 	@PostMapping("/post/insert")
-	public String postInsertPost(Model model, BoardVO board,
+	public String postInsertPost(Model model, BoardVO board, 
 			HttpSession session, MultipartFile [] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		boolean res = boardService.insertBoard(board, user, files);
@@ -57,5 +58,19 @@ public class BoardController {
 			model.addAttribute("url", "/post/insert");
 		}
 		return "message";
+	}
+	@GetMapping("/post/detail")
+	public String postDetail(Model model, int num) {
+		// 게시글 조회수 증가
+		boardService.updateView(num);
+		// 게시글을 가져옴(여러개면 리스트, 한개면 VO)
+		BoardVO board = boardService.getBoard(num);
+		// 게시글 첨부파일을 가져옴
+		ArrayList<FileVO> list = boardService.getFileList(num);
+		// 화면에 게시글, 첨부파일을 전송
+		model.addAttribute("board", board);
+		model.addAttribute("list", list);
+		
+		return "/post/detail";
 	}
 }

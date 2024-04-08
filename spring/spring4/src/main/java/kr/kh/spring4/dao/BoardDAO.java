@@ -10,13 +10,20 @@ import kr.kh.spring4.model.vo.FileVO;
 import kr.kh.spring4.pagination.Criteria;
 
 public interface BoardDAO {
-	ArrayList<BoardVO> selectBoardList(@Param("cri") Criteria cri);
+	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
 
-	int selectBoardTotalCount(@Param("cri") Criteria cri);
+	int selectBoardTotalCount(@Param("cri")Criteria cri);
 
-	boolean insertBoard(@Param("board") BoardVO board);
+	boolean insertBoard(@Param("board")BoardVO board);
 
 	ArrayList<CommunityVO> selectCommunityList();
 
-	void insertFile(@Param("file") FileVO fileVO);
+	void insertFile(@Param("file")FileVO fileVO);
+
+	void updateView(@Param("num")int num);
+
+	BoardVO selectBoard(@Param("num")int num);
+
+	ArrayList<FileVO> selectFileList(@Param("num")int num);
+
 }
